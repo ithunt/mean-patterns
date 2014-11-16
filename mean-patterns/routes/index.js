@@ -22,7 +22,28 @@ router.post('/patterns', function(req, res, next){
         if(error) {return next(error); }
         res.json(pattern);
     })
-})
+});
+
+//automatically load an object.. hmm
+//chain of responsibility here it seems
+router.param('pattern', function(req, res, next, id) {
+    var query = Pattern.findById(id);
+
+    //mongoose query interface
+    query.exec(function(err, pattern) {
+        if(err) { return next(err); }
+        if(!pattern) { return next(new Error("can't find pattern")); }
+
+        req.pattern = pattern;
+        return next();
+    })
+});
+
+router.get('patterns/:pattern', function(req, res) {
+    //so the router param is picked up first and function run,
+    // then pattern is already in the request
+    res.json(req.pattern);
+});
 /* GET home page. */
 router.get('/', function(req, res) {
   res.render('index', { title: 'Express' });
