@@ -1,0 +1,20 @@
+<html>
+	<head>
+		<title>Mean Posts!</title>
+		<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.min.js"></script>
+		<script src="app.js"></script>
+	</head>
+	<body ng-app="meanPatterns" ng-controller="MainCtrl">
+		<div>
+			{{test}}
+		</div>
+		<div ng-repeat="pattern in patterns | orderBy: '-upvotes'">
+            <span ng-click="incrementUpvotes(pattern)">^</span>
+			{{pattern.name}} ({{pattern.upvotes}} votes)
+		</div>
+        <form ng-submit="addPattern()">
+            <input type="text" ng-model="newPatternName"> </input>
+            <button type="submit">Post</button>
+        </form>
+	<body>
+</html>
