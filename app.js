@@ -1,26 +1,32 @@
 angular.module('meanPatterns', [])
-.controller('MainCtrl', [
-	'$scope',
-	function($scope) {
-		$scope.test = 'Hello Thar!';
-		$scope.patterns = [
-            {name: 'Trey Anastasio', upvotes: 7},
-            {name: 'Page McConnel', upvotes: 5},
-            {name: 'Mike Gordon', upvotes: 4},
-            {name: 'Jon Fishman', upvotes: 3}
-		];
+    .factory('patterns', [function() {
+        var p = {
 
-        $scope.addPattern = function() {
-            if($scope.newPatternName && !($scope.newPatternName === ''))  {
-                $scope.patterns.push({name: $scope.newPatternName, upvotes: 0 });
-                $scope.newPatternName = '';
-            }
+            patterns : [
+                {name: 'Trey Anastasio', upvotes: 7},
+                {name: 'Page McConnel', upvotes: 5},
+                {name: 'Mike Gordon', upvotes: 4},
+                {name: 'Jon Fishman', upvotes: 3}
+            ]
         }
+        return p;
+    }])
+    .controller('MainCtrl', [
+        '$scope', 'patterns',
+        function($scope, patterns) {
+            $scope.patterns = patterns.patterns;
 
-        $scope.incrementUpvotes = function(pattern) {
-            pattern.upvotes += 1;
-        };
-	}
-	]
-);
+            $scope.addPattern = function() {
+                if($scope.newPatternName && !($scope.newPatternName === ''))  {
+                    $scope.patterns.push({name: $scope.newPatternName, upvotes: 0 });
+                    $scope.newPatternName = '';
+                }
+            }
+
+            $scope.incrementUpvotes = function(pattern) {
+                pattern.upvotes += 1;
+            };
+        }
+    ])
+;
 
