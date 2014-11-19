@@ -12,6 +12,7 @@ var PatternSchema = new mongoose.Schema({
 
 //cb = callback function
 PatternSchema.methods.upvote = function (cb) {
+    "use strict";
     this.upvotes += 1;
     this.save(cb); //CALLBACK
 };
