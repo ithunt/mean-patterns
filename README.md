@@ -11,9 +11,13 @@ With the introduction of Node.js it is now possible to create full stack web app
 Still looking for hard science related to programming but cognitive task switching is well studied in psychology.
 [Mental Context Switches Are Evil](http://www.johndcook.com/blog/2011/06/09/mental-context-switches-are-evil/)
 
+## Code
+Using [JSLint](http://jslint.com) from Doug Crockford to improve code quality
+
+Note the extensive use of `"use strict";` statements in functions in `index.js`
+
 
 ## Sources
 Currently following the tutorial [at thinkster](https://thinkster.io/angulartutorial/mean-stack-tutorial/)
 
 Potentially integrating sb-admin for an angular dashboard app [sb-admin](https://github.com/IronSummitMedia/startbootstrap-sb-admin)
-                    ;;
