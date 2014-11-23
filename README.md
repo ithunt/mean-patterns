@@ -1,6 +1,7 @@
 ## MEAN Patterns
 Utilizing the MEAN (MongoDB, ExpressJS, AngularJS, NodeJS) stack to rapidly create web applications
 
+    mongod &
     cd mean-patterns
     npm start
     http://localhost:3000
